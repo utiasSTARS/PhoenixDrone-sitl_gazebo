@@ -161,8 +161,15 @@ void LiftDragPlugin::Load(physics::ModelPtr _model,
 void LiftDragPlugin::OnUpdate()
 {
   GZ_ASSERT(this->link, "Link was NULL");
+
+  // pose of body
+  math::Pose pose = this->link->GetWorldPose();
+
   // get linear velocity at cp in inertial frame
   math::Vector3 vel = this->link->GetWorldLinearVel(this->cp);
+  math::Vector3 downwash(0, 0, 15);
+  math::Vector3 downwash_I = pose.rot.RotateVector(downwash);
+  vel = vel + downwash_I;
   math::Vector3 velI = vel;
   velI.Normalize();
 
@@ -174,11 +181,10 @@ void LiftDragPlugin::OnUpdate()
   if (vel.GetLength() <= 0.01)
     return;
 
-  // pose of body
-  math::Pose pose = this->link->GetWorldPose();
 
   // rotate forward and upward vectors into inertial frame
   math::Vector3 forwardI = pose.rot.RotateVector(this->forward);
+
 
   math::Vector3 upwardI;
   if (this->radialSymmetry)
@@ -203,7 +209,7 @@ void LiftDragPlugin::OnUpdate()
       spanwiseI.Dot(velI), minRatio, maxRatio);
 
   // get cos from trig identity
-  double cosSweepAngle = 1.0 - sinSweepAngle * sinSweepAngle;
+  double cosSweepAngle = 1.0 - sinSweepAngle * sinSweepAngle;//FIXME:Shouldn't be sqrt(...)?
   this->sweep = asin(sinSweepAngle);
 
   // truncate sweep to within +/-90 deg
