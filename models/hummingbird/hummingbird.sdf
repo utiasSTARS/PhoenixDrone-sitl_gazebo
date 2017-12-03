@@ -53,7 +53,7 @@
       <self_collide>0</self_collide>
     </link>
     <link name='hummingbird/imu_link'>
-      <pose>0 0 0.55 0 -0 3.14159</pose>
+      <pose>0 0 0.55 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
         <mass>0.015</mass>
@@ -293,7 +293,7 @@
       <k_lift>0.00000348</k_lift>
       <k_drag>0.00000175</k_drag>
       <k_pitch>-0.000000344</k_pitch>
-      <cp>0 -0.25 -0.1</cp>
+      <cp>0 0.3 -0.1</cp>
       <forward>0 0 1</forward>
       <upward>1 0 0</upward>
       <link_name>base_link</link_name>
@@ -306,7 +306,7 @@
       <k_lift>0.00000348</k_lift>
       <k_drag>0.00000175</k_drag>
       <k_pitch>-0.000000344</k_pitch>
-      <cp>0 0.25 -0.1</cp>
+      <cp>0 -0.3 -0.1</cp>
       <forward>0 0 1</forward>
       <upward>1 0 0</upward>
       <link_name>base_link</link_name>
@@ -402,7 +402,7 @@
         <channel name="left_elevon">
           <input_index>5</input_index>
           <input_offset>0</input_offset>
-          <input_scaling>1</input_scaling>
+          <input_scaling>-1</input_scaling>
           <zero_position_disarmed>0</zero_position_disarmed>
           <zero_position_armed>0</zero_position_armed>
           <joint_control_type>position_kinematic</joint_control_type>

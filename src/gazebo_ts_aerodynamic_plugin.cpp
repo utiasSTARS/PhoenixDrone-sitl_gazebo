@@ -144,6 +144,7 @@ void TSAeroPlugin::OnUpdate()
   // compute lift force at cp
   math::Vector3 lift = k_lift * prop_rads * prop_rads * delta * upwardI;
 
+  //gzerr << this->controlJoint->GetName() << "lift:" << lift << "delta:"<< delta << "\n";
   // compute drag at cp
   math::Vector3 drag = k_drag * prop_rads * prop_rads * delta * delta * -forwardI;
 

@@ -624,7 +624,7 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
 
   // frames
   // g - gazebo (ENU), east, north, up
-  // r - rotors imu frame (FLU), forward, left, up
+  // r - rotors imu frame (FLU), right, forward, up
   // b - px4 (FRD) forward, right down
   // n - px4 (NED) north, east, down
   math::Quaternion q_gr = math::Quaternion(
@@ -644,8 +644,7 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
       ]
   )).round(5)
   */
-  math::Quaternion q_br(0, 1, 0, 0);
-
+  math::Quaternion q_br(0, 0.70711, 0.70711, 0);
 
   // q_ng
   /*
