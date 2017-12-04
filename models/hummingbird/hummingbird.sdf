@@ -2,8 +2,11 @@
   <model name='hummingbird'>
     <link name='base_link'>
       <pose>0 0 0.2 0 -0 0</pose>
+      <frame name='base_link'>
+      <pose>0 0 0.0 0 -0 0</pose>
+      </frame>
       <inertial>
-        <pose>0 0 0.35 0 -0 0</pose>
+        <pose>0 0 0.157 0 -0 0</pose>
         <mass>0.7</mass>
         <inertia>
           <ixx>0.147563</ixx>
@@ -18,7 +21,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-            <size>0.47 0.47 0.11</size>
+            <size>0.2 0.6 0.06</size>
           </box>
         </geometry>
         <surface>
@@ -34,10 +37,10 @@
         </surface>
       </collision>
       <visual name='base_link_visual'>
-        <pose>0 0 0.47 0 -1.57075 0</pose>
+        <pose>0 0 0.27 0 -1.57075 0</pose>
         <geometry>
           <mesh>
-            <scale>0.001 0.001 0.001</scale>
+            <scale>0.0006 0.0007 0.0007</scale>
             <uri>model://hummingbird/meshes/pacflyer_s100_mockup.dae</uri>
           </mesh>
         </geometry>
@@ -53,7 +56,7 @@
       <self_collide>0</self_collide>
     </link>
     <link name='hummingbird/imu_link'>
-      <pose>0 0 0.55 0 -0 0</pose>
+      <pose>0 0 0.357 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
         <mass>0.015</mass>
@@ -72,7 +75,7 @@
       <parent>base_link</parent>
     </joint>
     <link name='rotor_left'>
-      <pose>0.0 -0.3 0.67 0 -0 0</pose>
+      <pose>0.0 -0.195 0.4685 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
         <mass>0.005</mass>
@@ -138,7 +141,7 @@
       </axis>
     </joint>
     <link name='rotor_right'>
-      <pose>0.0 0.3 0.67 0 -0 0</pose>
+      <pose>0.0 0.195 0.4685 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
         <mass>0.005</mass>
@@ -204,6 +207,7 @@
       </axis>
     </joint>
     <link name="left_elevon">
+      <pose>0 0.195 0.2365 0 0 0</pose>
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
@@ -214,18 +218,18 @@
           <iyz>0.0</iyz>
           <izz>0.000001</izz>
         </inertia>
-        <pose>0 0.25 0.375 0.00 0 0.0</pose>
       </inertial>
       <visual name="left_elevon_visual">
-	<pose>0 0.25 0.3 0 0 0</pose>
-	<geometry>
-	  <box>
-	    <size> 0.05 0.4 0.15</size>
-	  </box>
-	</geometry>
+		<pose>0 0.0 0.0 0 0 0</pose>
+		<geometry>
+		  <box>
+		    <size> 0.015 0.22 0.07347</size>
+		  </box>
+		</geometry>
       </visual>
     </link>
     <link name="right_elevon">
+      <pose>0 -0.195 0.2365 0 0 0</pose>
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
@@ -236,21 +240,20 @@
           <iyz>0.0</iyz>
           <izz>0.000001</izz>
         </inertia>
-        <pose>0 -0.25 0.375 0.00 0 0.0</pose>
       </inertial>
-      <visual name="left_elevon_visual">
-	<pose>0 -0.25 0.3 0 0 0</pose>
-	<geometry>
-	  <box>
-	    <size> 0.05 0.4 0.15</size>
-	  </box>
-	</geometry>
-      </visual>
+     <visual name="left_elevon_visual">
+		<pose>0 -0.0 0.0 0 0 0</pose>
+		<geometry>
+	  	<box>
+	    	<size> 0.015  0.22 0.07347</size>
+	  	</box>
+		</geometry>
+     </visual>
     </link>
     <joint name='left_elevon_joint' type='revolute'>
       <parent>base_link</parent>
       <child>left_elevon</child>
-      <pose>0 0.3 0.375 0.00 0 0.0</pose>
+      <pose>0 0.0 0.03 0.00 0 0.0</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -267,11 +270,12 @@
           <implicit_spring_damper>1</implicit_spring_damper>
         </ode>
       </physics>
+      <use_parent_model_frame>1</use_parent_model_frame>
     </joint>
     <joint name='right_elevon_joint' type='revolute'>
       <parent>base_link</parent>
       <child>right_elevon</child>
-      <pose>0 -0.3 0.375 0.00 0 0.0</pose>
+      <pose>0 0.0 0.03 0.00 0 0.0</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -288,12 +292,13 @@
           <implicit_spring_damper>1</implicit_spring_damper>
         </ode>
       </physics>
+      <use_parent_model_frame>1</use_parent_model_frame>
     </joint>
     <plugin name="left_wing" filename="libgazebo_ts_aerodynamic_plugin.so">
       <k_lift>0.00000348</k_lift>
       <k_drag>0.00000175</k_drag>
       <k_pitch>-0.000000344</k_pitch>
-      <cp>0 0.3 -0.1</cp>
+      <cp>0 0.195 0.036</cp>
       <forward>0 0 1</forward>
       <upward>1 0 0</upward>
       <link_name>base_link</link_name>
@@ -306,7 +311,7 @@
       <k_lift>0.00000348</k_lift>
       <k_drag>0.00000175</k_drag>
       <k_pitch>-0.000000344</k_pitch>
-      <cp>0 -0.3 -0.1</cp>
+      <cp>0 -0.195 0.036</cp>
       <forward>0 0 1</forward>
       <upward>1 0 0</upward>
       <link_name>base_link</link_name>
