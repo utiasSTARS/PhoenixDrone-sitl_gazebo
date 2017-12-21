@@ -7,7 +7,7 @@
       </frame>
       <inertial>
         <pose>0 0 0.157 0 -0 0</pose>
-        <mass>0.7</mass>
+        <mass>0.5</mass>
         <inertia>
           <ixx>0.147563</ixx>
           <ixy>0</ixy>
