@@ -746,6 +746,7 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
 
   // ground truth
   math::Vector3 accel_true_b = q_br.RotateVector(model_->GetRelativeLinearAccel());
+  math::Vector3 accel_true_w = q_ng.RotateVector(model_->GetWorldLinearAccel());
 
   // send ground truth
   mavlink_hil_state_quaternion_t hil_state_quat;
@@ -771,9 +772,9 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
   hil_state_quat.ind_airspeed = vel_b.x;
   hil_state_quat.true_airspeed = model_->GetWorldLinearVel().GetLength() * 100; //no wind simulated
 
-  hil_state_quat.xacc = accel_true_b.x * 1000;
-  hil_state_quat.yacc = accel_true_b.y * 1000;
-  hil_state_quat.zacc = accel_true_b.z * 1000;
+  hil_state_quat.xacc = accel_true_w.x * 1000;
+  hil_state_quat.yacc = accel_true_w.y * 1000;
+  hil_state_quat.zacc = accel_true_w.z * 1000;
 
   send_mavlink_message(MAVLINK_MSG_ID_HIL_STATE_QUATERNION, &hil_state_quat, 200);
 }
