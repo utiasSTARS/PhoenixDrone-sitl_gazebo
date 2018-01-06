@@ -644,7 +644,7 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
       ]
   )).round(5)
   */
-  math::Quaternion q_br(0, 0.70711, 0.70711, 0);
+  math::Quaternion q_br(0, 1.0, 0.0, 0);
 
   // q_ng
   /*
