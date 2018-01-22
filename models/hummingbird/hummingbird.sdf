@@ -363,14 +363,14 @@
       <robotNamespace></robotNamespace>
       <linkName>hummingbird/imu_link</linkName>
       <imuTopic>/imu</imuTopic>
-      <gyroscopeNoiseDensity>0.0000</gyroscopeNoiseDensity>
-      <gyroscopeRandomWalk>0e-05</gyroscopeRandomWalk>
+      <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
+      <gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
       <gyroscopeBiasCorrelationTime>1000.0</gyroscopeBiasCorrelationTime>
-      <gyroscopeTurnOnBiasSigma>0.000</gyroscopeTurnOnBiasSigma>
-      <accelerometerNoiseDensity>0.000</accelerometerNoiseDensity>
-      <accelerometerRandomWalk>0.000</accelerometerRandomWalk>
+      <gyroscopeTurnOnBiasSigma>0.0087</gyroscopeTurnOnBiasSigma>
+      <accelerometerNoiseDensity>0.004</accelerometerNoiseDensity>
+      <accelerometerRandomWalk>0.006</accelerometerRandomWalk>
       <accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
-      <accelerometerTurnOnBiasSigma>0.0</accelerometerTurnOnBiasSigma>
+      <accelerometerTurnOnBiasSigma>0.196</accelerometerTurnOnBiasSigma>
     </plugin>
     <plugin name='mavlink_interface' filename='librotors_gazebo_mavlink_interface.so'>
       <robotNamespace></robotNamespace>
