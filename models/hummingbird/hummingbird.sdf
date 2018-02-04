@@ -9,12 +9,12 @@
         <pose>0 0 0.157 0 -0 0</pose>
         <mass>0.5</mass>
         <inertia>
-          <ixx>0.147563</ixx>
+          <ixx>0.0147563</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.0458929</iyy>
+          <iyy>0.00638929</iyy>
           <iyz>0</iyz>
-          <izz>0.1977</izz>
+          <izz>0.0177</izz>
         </inertia>
       </inertial>
       <collision name='base_link_collision'>
