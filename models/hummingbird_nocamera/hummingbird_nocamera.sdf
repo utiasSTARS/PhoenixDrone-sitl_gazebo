@@ -1,5 +1,5 @@
 <sdf version='1.5'>
-  <model name='hummingbird'>
+  <model name='hummingbird_nocamera'>
     <link name='base_link'>
       <pose>0 0 0.2 0 -0 0</pose>
       <frame name='base_link'>

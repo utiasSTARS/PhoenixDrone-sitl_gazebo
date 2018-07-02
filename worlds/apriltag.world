@@ -11,7 +11,7 @@
     </include>
     <include>
       <uri>model://Tag0</uri>
-      <pose>2 0 1   0 0 1.57079</pose>
+      <pose>2.5 0.0  1.5  0 0 1.57079</pose>
     </include>
     <physics name='default_physics' default='0' type='ode'>
       <gravity>0 0 -9.8066</gravity>
