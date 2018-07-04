@@ -23,6 +23,15 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 option(BUILD_GSTREAMER_PLUGIN "enable gstreamer plugin" "OFF")
 
 ## System dependencies are found with CMake's conventions
+find_package(catkin REQUIRED COMPONENTS 
+  rospy
+  roscpp
+  std_msgs
+  geometry_msgs
+  sensor_msgs
+  gazebo_ros  
+  dynamic_reconfigure
+)
 find_package(PkgConfig REQUIRED)
 find_package(gazebo REQUIRED)
 find_program(px4 REQUIRED)
