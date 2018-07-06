@@ -400,6 +400,7 @@
       <use_parent_model_frame>1</use_parent_model_frame>
     </joint>
     <plugin name="left_wing" filename="libgazebo_ts_aerodynamic_plugin.so">
+      <robotNamespace>ts2</robotNamespace>
       <k_lift>0.00000348</k_lift>
       <k_drag>0.00000175</k_drag>
       <k_pitch>-0.000000344</k_pitch>
@@ -413,6 +414,7 @@
       </control_joint_name>
     </plugin>
     <plugin name="right_wing" filename="libgazebo_ts_aerodynamic_plugin.so">
+      <robotNamespace>ts2</robotNamespace>
       <k_lift>0.00000348</k_lift>
       <k_drag>0.00000175</k_drag>
       <k_pitch>-0.000000344</k_pitch>
@@ -431,7 +433,7 @@
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
     </plugin-->
     <plugin name='front_left_motor_model' filename='librotors_gazebo_motor_model.so'>
-      <robotNamespace></robotNamespace>
+      <robotNamespace>ts2</robotNamespace>
       <jointName>rotor_left_joint</jointName>
       <linkName>rotor_left</linkName>
       <turningDirection>cw</turningDirection>
@@ -448,7 +450,7 @@
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
     </plugin>
     <plugin name='front_right_motor_model' filename='librotors_gazebo_motor_model.so'>
-      <robotNamespace></robotNamespace>
+      <robotNamespace>ts2</robotNamespace>
       <jointName>rotor_right_joint</jointName>
       <linkName>rotor_right</linkName>
       <turningDirection>ccw</turningDirection>
@@ -465,7 +467,7 @@
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
     </plugin>
     <plugin name='rotors_gazebo_imu_plugin' filename='librotors_gazebo_imu_plugin.so'>
-      <robotNamespace></robotNamespace>
+      <robotNamespace>ts2</robotNamespace>
       <linkName>hummingbird/imu_link</linkName>
       <imuTopic>/imu</imuTopic>
       <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>

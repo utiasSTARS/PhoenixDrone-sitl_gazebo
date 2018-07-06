@@ -297,7 +297,7 @@
             </noise>
           </camera>
           <always_on>1</always_on>
-          <update_rate>2</update_rate>
+          <update_rate>10</update_rate>
           <visualize>1</visualize>
         </sensor>
         <sensor name='ired1' type='camera'>
@@ -320,7 +320,7 @@
             </noise>
           </camera>
           <always_on>1</always_on>
-          <update_rate>2</update_rate>
+          <update_rate>10</update_rate>
           <visualize>0</visualize>
         </sensor>
         <sensor name='ired2' type='camera'>
@@ -343,7 +343,7 @@
             </noise>
           </camera>
           <always_on>1</always_on>
-          <update_rate>2</update_rate>
+          <update_rate>10</update_rate>
           <visualize>0</visualize>
         </sensor>
         <sensor name='depth' type='depth'>
@@ -365,7 +365,7 @@
             </noise>
           </camera>
           <always_on>1</always_on>
-          <update_rate>2</update_rate>
+          <update_rate>10</update_rate>
           <visualize>0</visualize>
         </sensor>
       </link>
@@ -376,12 +376,12 @@
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
-          <ixx>0</ixx>
+          <ixx>1e-9</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0</iyy>
+          <iyy>1e-9</iyy>
           <iyz>0</iyz>
-          <izz>0</izz>
+          <izz>1e-9</izz>
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
@@ -414,12 +414,12 @@
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
-          <ixx>0</ixx>
+          <ixx>1e-9</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0</iyy>
+          <iyy>1e-9</iyy>
           <iyz>0</iyz>
-          <izz>0</izz>
+          <izz>1e-9</izz>
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
