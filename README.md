@@ -1,8 +1,12 @@
-# Gazebo for MAVLink SITL
+# Gazebo SITL plugins for Hummingbird
 
-This is a flight simulator for multirotors, VTOL and fixed wing. It uses the motor model and other pieces from the RotorS simulator, but in contrast to RotorS has no dependency on ROS. This repository is in the process of being re-integrated into RotorS, which then will support ROS and MAVLink as transport options: https://github.com/ethz-asl/rotors_simulator
+This repository is built upon RotorS from ETHZ-ASL: https://github.com/ethz-asl/rotors_simulator
 
-**If you use this simulator in academic work, please cite RotorS as per the README in the above link.**
+Our main contribution is a custom model of Hummingbird under `models/hummingbird/hummingbird.sdf` and its aerodynamic plugin with calibrated aerodyanmic coefficients under `src/gazebo_ts_aerodynamic_plugin.cpp`.
+
+You do not need to explicitly build this library, this repo is referenced as a submodule under the main PX4 repository and will be compiled automatically when running SITL.
+
+**If you use this simulator in academic work, please cite RotorS and our paper as per the README in the upper level repository.**
 
 ## Install Gazebo Simulator
 
