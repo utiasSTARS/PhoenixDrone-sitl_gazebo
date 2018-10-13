@@ -1,5 +1,5 @@
 <sdf version='1.5'>
-  <model name='hummingbird_nocamera'>
+  <model name='hummingbird_fixed'>
     <link name='base_link'>
       <pose>0 0 0.2 0 -0 0</pose>
       <frame name='base_link'>
@@ -250,6 +250,282 @@
 		</geometry>
      </visual>
     </link>
+    <!-- Front and Back tags -->
+    <link name="tag0">
+      <fixed>0</fixed>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>1e-9</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-9</iyy>
+          <iyz>0</iyz>
+          <izz>1e-9</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <pose frame=''>0.02 -0.14 0.357  0 0 -1.57079</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>.10 0.001 .10</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>.10 0.001 .10</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://Tag0/materials/scripts</uri>
+            <uri>model://Tag0/materials/textures</uri>
+            <name>vrc/Tag0</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <link name="tag1">
+      <fixed>0</fixed>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>1e-9</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-9</iyy>
+          <iyz>0</iyz>
+          <izz>1e-9</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <pose frame=''>0.02 0.14 0.357  0 0 -1.57079</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>.10 0.001 .10</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>.10 0.001 .10</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://Tag1/materials/scripts</uri>
+            <uri>model://Tag1/materials/textures</uri>
+            <name>vrc/Tag1</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <link name="tag2">
+      <fixed>0</fixed>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>1e-9</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-9</iyy>
+          <iyz>0</iyz>
+          <izz>1e-9</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <pose frame=''>-0.02 -0.14 0.357  0 0 -1.57079</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>.10 0.001 .10</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>.1 0.001 .1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://Tag2/materials/scripts</uri>
+            <uri>model://Tag2/materials/textures</uri>
+            <name>vrc/Tag2</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <link name="tag3">
+      <fixed>0</fixed>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>1e-9</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-9</iyy>
+          <iyz>0</iyz>
+          <izz>1e-9</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <pose frame=''>-0.02 0.14 0.357  0 0 -1.57079</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>.10 0.001 .10</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>.1 0.001 .1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://Tag3/materials/scripts</uri>
+            <uri>model://Tag3/materials/textures</uri>
+            <name>vrc/Tag3</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <link name="tag4">
+      <fixed>0</fixed>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>1e-9</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-9</iyy>
+          <iyz>0</iyz>
+          <izz>1e-9</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <pose frame=''>-0.02 -0.054 0.382  0 0 1.57079</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>.05 0.001 .05</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>.05 0.001 .05</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://Tag4/materials/scripts</uri>
+            <uri>model://Tag4/materials/textures</uri>
+            <name>vrc/Tag4</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <link name="tag5">
+      <fixed>0</fixed>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>1e-9</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-9</iyy>
+          <iyz>0</iyz>
+          <izz>1e-9</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <pose frame=''>-0.02 0.054 0.382  0 0 1.57079</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>.05 0.001 .05</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>.05 0.001 .05</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://Tag5/materials/scripts</uri>
+            <uri>model://Tag5/materials/textures</uri>
+            <name>vrc/Tag5</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='hummingbird_back_left_tag' type='fixed'>
+      <parent>base_link</parent>
+      <child>tag0</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </joint>
+    <joint name='hummingbird_back_right_tag' type='fixed'>
+      <parent>base_link</parent>
+      <child>tag1</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </joint>
+    <joint name='hummingbird_front_left_tag' type='fixed'>
+      <parent>base_link</parent>
+      <child>tag2</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </joint>
+    <joint name='hummingbird_front_right_tag' type='fixed'>
+      <parent>base_link</parent>
+      <child>tag3</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </joint>
+    <joint name='hummingbird_front_left_tag_small' type='fixed'>
+      <parent>base_link</parent>
+      <child>tag4</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </joint>
+    <joint name='hummingbird_front_right_tag_small' type='fixed'>
+      <parent>base_link</parent>
+      <child>tag5</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </joint>
+    <joint name='hummingbird_realsense' type='fixed'>
+      <parent>base_link</parent>
+      <child>realsense_camera::link</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
     <joint name='left_elevon_joint' type='revolute'>
       <parent>base_link</parent>
       <child>left_elevon</child>
@@ -295,6 +571,7 @@
       <use_parent_model_frame>1</use_parent_model_frame>
     </joint>
     <plugin name="left_wing" filename="libgazebo_ts_aerodynamic_plugin.so">
+      <robotNamespace>ts2</robotNamespace>
       <k_lift>0.00000348</k_lift>
       <k_drag>0.00000175</k_drag>
       <k_pitch>-0.000000344</k_pitch>
@@ -308,6 +585,7 @@
       </control_joint_name>
     </plugin>
     <plugin name="right_wing" filename="libgazebo_ts_aerodynamic_plugin.so">
+      <robotNamespace>ts2</robotNamespace>
       <k_lift>0.00000348</k_lift>
       <k_drag>0.00000175</k_drag>
       <k_pitch>-0.000000344</k_pitch>
@@ -320,13 +598,8 @@
         right_elevon_joint
       </control_joint_name>
     </plugin>
-    <!--plugin name='rosbag' filename='librotors_gazebo_multirotor_base_plugin.so'>
-      <robotNamespace></robotNamespace>
-      <linkName>base_link</linkName>
-      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
-    </plugin-->
     <plugin name='front_left_motor_model' filename='librotors_gazebo_motor_model.so'>
-      <robotNamespace></robotNamespace>
+      <robotNamespace>ts2</robotNamespace>
       <jointName>rotor_left_joint</jointName>
       <linkName>rotor_left</linkName>
       <turningDirection>cw</turningDirection>
@@ -343,7 +616,7 @@
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
     </plugin>
     <plugin name='front_right_motor_model' filename='librotors_gazebo_motor_model.so'>
-      <robotNamespace></robotNamespace>
+      <robotNamespace>ts2</robotNamespace>
       <jointName>rotor_right_joint</jointName>
       <linkName>rotor_right</linkName>
       <turningDirection>ccw</turningDirection>
@@ -360,7 +633,7 @@
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
     </plugin>
     <plugin name='rotors_gazebo_imu_plugin' filename='librotors_gazebo_imu_plugin.so'>
-      <robotNamespace></robotNamespace>
+      <robotNamespace>ts2</robotNamespace>
       <linkName>hummingbird/imu_link</linkName>
       <imuTopic>/imu</imuTopic>
       <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
@@ -370,57 +643,7 @@
       <accelerometerNoiseDensity>0.004</accelerometerNoiseDensity>
       <accelerometerRandomWalk>0.006</accelerometerRandomWalk>
       <accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
-      <accelerometerTurnOnBiasSigma>0.196</accelerometerTurnOnBiasSigma>
+      <accelerometerTurnOnBiasSigma>0.000</accelerometerTurnOnBiasSigma>
     </plugin>
-    <plugin name='mavlink_interface' filename='librotors_gazebo_mavlink_interface.so'>
-      <robotNamespace></robotNamespace>
-      <imuSubTopic>/imu</imuSubTopic>
-      <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
-      <control_channels>
-        <channel name="rotor_right">
-          <input_index>0</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>800</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>velocity</joint_control_type>
-          <joint_name>rotor_right_joint</joint_name>
-        </channel>
-        <channel name="rotor_left">
-          <input_index>1</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>800</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>velocity</joint_control_type>
-          <joint_name>rotor_left_joint</joint_name>
-        </channel>
-        <channel name="right_elevon">
-          <input_index>4</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>-0.017444</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position_kinematic</joint_control_type>
-          <joint_name>right_elevon_joint</joint_name>
-        </channel>
-        <channel name="left_elevon">
-          <input_index>5</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>-0.017444</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position_kinematic</joint_control_type>
-          <joint_name>left_elevon_joint</joint_name>
-        </channel>
-      </control_channels>
-      <left_elevon_joint>
-        left_elevon_joint
-      </left_elevon_joint>
-      <right_elevon_joint>
-        right_elevon_joint
-      </right_elevon_joint>
-    </plugin>
-    <static>0</static>
   </model>
 </sdf>
