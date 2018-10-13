@@ -716,11 +716,6 @@
         right_elevon_joint
       </control_joint_name>
     </plugin>
-    <!--plugin name='rosbag' filename='librotors_gazebo_multirotor_base_plugin.so'>
-      <robotNamespace></robotNamespace>
-      <linkName>base_link</linkName>
-      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
-    </plugin-->
     <plugin name='front_left_motor_model' filename='librotors_gazebo_motor_model.so'>
       <robotNamespace></robotNamespace>
       <jointName>rotor_left_joint</jointName>
