@@ -3,7 +3,7 @@
     <link name='base_link'>
       <pose>0 0 0.2 0 -0 0</pose>
       <frame name='base_link'>
-      <pose>0 0 0.0 0 -0 0</pose>
+        <pose>0 0 0.0 0 -0 0</pose>
       </frame>
       <inertial>
         <pose>0 0 0.157 0 -0 0</pose>
@@ -55,25 +55,6 @@
       <velocity_decay/>
       <self_collide>0</self_collide>
     </link>
-    <link name='hummingbird/imu_link'>
-      <pose>0 0 0.357 0 -0 0</pose>
-      <inertial>
-        <pose>0 0 0 0 -0 0</pose>
-        <mass>0.015</mass>
-        <inertia>
-          <ixx>1e-05</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>1e-05</iyy>
-          <iyz>0</iyz>
-          <izz>1e-05</izz>
-        </inertia>
-      </inertial>
-    </link>
-    <joint name='hummingbird/imu_joint' type='fixed'>
-      <child>hummingbird/imu_link</child>
-      <parent>base_link</parent>
-    </joint>
     <link name='rotor_left'>
       <pose>0.0 -0.195 0.4685 0 -0 0</pose>
       <inertial>
@@ -124,22 +105,6 @@
       <velocity_decay/>
       <self_collide>0</self_collide>
     </link>
-    <joint name='rotor_left_joint' type='revolute'>
-      <child>rotor_left</child>
-      <parent>base_link</parent>
-      <axis>
-        <xyz>0 0 1</xyz>
-        <limit>
-          <lower>-1e+16</lower>
-          <upper>1e+16</upper>
-        </limit>
-        <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
-        </dynamics>
-        <use_parent_model_frame>1</use_parent_model_frame>
-      </axis>
-    </joint>
     <link name='rotor_right'>
       <pose>0.0 0.195 0.4685 0 -0 0</pose>
       <inertial>
@@ -190,22 +155,6 @@
       <velocity_decay/>
       <self_collide>0</self_collide>
     </link>
-    <joint name='rotor_right_joint' type='revolute'>
-      <child>rotor_right</child>
-      <parent>base_link</parent>
-      <axis>
-        <xyz>0 0 1</xyz>
-        <limit>
-          <lower>-1e+16</lower>
-          <upper>1e+16</upper>
-        </limit>
-        <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
-        </dynamics>
-        <use_parent_model_frame>1</use_parent_model_frame>
-      </axis>
-    </joint>
     <link name="left_elevon">
       <pose>0 0.195 0.2365 0 0 0</pose>
       <inertial>
@@ -220,12 +169,12 @@
         </inertia>
       </inertial>
       <visual name="left_elevon_visual">
-		<pose>0 0.0 0.0 0 0 0</pose>
-		<geometry>
-		  <box>
-		    <size> 0.015 0.22 0.07347</size>
-		  </box>
-		</geometry>
+        <pose>0 0.0 0.0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size> 0.015 0.22 0.07347</size>
+          </box>
+        </geometry>
       </visual>
     </link>
     <link name="right_elevon">
@@ -241,18 +190,17 @@
           <izz>0.000001</izz>
         </inertia>
       </inertial>
-     <visual name="left_elevon_visual">
-		<pose>0 -0.0 0.0 0 0 0</pose>
-		<geometry>
-	  	<box>
-	    	<size> 0.015  0.22 0.07347</size>
-	  	</box>
-		</geometry>
-     </visual>
+      <visual name="left_elevon_visual">
+        <pose>0 -0.0 0.0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size> 0.015  0.22 0.07347</size>
+          </box>
+        </geometry>
+      </visual>
     </link>
-    <!-- Front and Back tags -->
+
     <link name="tag0">
-      <fixed>0</fixed>
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
@@ -265,7 +213,7 @@
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>0.02 -0.14 0.357  0 0 -1.57079</pose>
+      <pose frame=''>0.02 -0.14 0.357  0 0 1.57079</pose>
       <collision name="collision">
         <geometry>
           <box>
@@ -290,7 +238,6 @@
       </visual>
     </link>
     <link name="tag1">
-      <fixed>0</fixed>
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
@@ -303,7 +250,7 @@
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>0.02 0.14 0.357  0 0 -1.57079</pose>
+      <pose frame=''>0.02 0.14 0.357  0 0 1.57079</pose>
       <collision name="collision">
         <geometry>
           <box>
@@ -328,7 +275,6 @@
       </visual>
     </link>
     <link name="tag2">
-      <fixed>0</fixed>
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
@@ -341,7 +287,7 @@
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>-0.02 -0.14 0.357  0 0 -1.57079</pose>
+      <pose frame=''>-0.02 -0.14 0.357  0 0 1.57079</pose>
       <collision name="collision">
         <geometry>
           <box>
@@ -366,7 +312,6 @@
       </visual>
     </link>
     <link name="tag3">
-      <fixed>0</fixed>
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
@@ -379,7 +324,7 @@
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>-0.02 0.14 0.357  0 0 -1.57079</pose>
+      <pose frame=''>-0.02 0.14 0.357  0 0 1.57079</pose>
       <collision name="collision">
         <geometry>
           <box>
@@ -404,7 +349,6 @@
       </visual>
     </link>
     <link name="tag4">
-      <fixed>0</fixed>
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
@@ -442,7 +386,6 @@
       </visual>
     </link>
     <link name="tag5">
-      <fixed>0</fixed>
       <inertial>
         <mass>0.00000001</mass>
         <inertia>
@@ -479,6 +422,60 @@
         </material>
       </visual>
     </link>
+
+    <link name='hummingbird/imu_link'>
+      <pose>0 0 0.357 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.015</mass>
+        <inertia>
+          <ixx>1e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-05</iyy>
+          <iyz>0</iyz>
+          <izz>1e-05</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name='hummingbird/imu_joint' type='fixed'>
+      <child>hummingbird/imu_link</child>
+      <parent>base_link</parent>
+    </joint>
+    <joint name='rotor_left_joint' type='revolute'>
+      <child>rotor_left</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <joint name='rotor_right_joint' type='revolute'>
+      <child>rotor_right</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
     <joint name='hummingbird_back_left_tag' type='fixed'>
       <parent>base_link</parent>
       <child>tag0</child>
@@ -546,7 +543,6 @@
           <implicit_spring_damper>1</implicit_spring_damper>
         </ode>
       </physics>
-      <use_parent_model_frame>1</use_parent_model_frame>
     </joint>
     <joint name='right_elevon_joint' type='revolute'>
       <parent>base_link</parent>
@@ -568,82 +564,8 @@
           <implicit_spring_damper>1</implicit_spring_damper>
         </ode>
       </physics>
-      <use_parent_model_frame>1</use_parent_model_frame>
     </joint>
-    <plugin name="left_wing" filename="libgazebo_ts_aerodynamic_plugin.so">
-      <robotNamespace>ts2</robotNamespace>
-      <k_lift>0.00000348</k_lift>
-      <k_drag>0.00000175</k_drag>
-      <k_pitch>-0.000000344</k_pitch>
-      <cp>0 0.195 0.036</cp>
-      <forward>0 0 1</forward>
-      <upward>1 0 0</upward>
-      <link_name>base_link</link_name>
-      <motor_joint_name>rotor_left_joint</motor_joint_name>
-      <control_joint_name>
-        left_elevon_joint
-      </control_joint_name>
-    </plugin>
-    <plugin name="right_wing" filename="libgazebo_ts_aerodynamic_plugin.so">
-      <robotNamespace>ts2</robotNamespace>
-      <k_lift>0.00000348</k_lift>
-      <k_drag>0.00000175</k_drag>
-      <k_pitch>-0.000000344</k_pitch>
-      <cp>0 -0.195 0.036</cp>
-      <forward>0 0 1</forward>
-      <upward>1 0 0</upward>
-      <link_name>base_link</link_name>
-      <motor_joint_name>rotor_right_joint</motor_joint_name>
-      <control_joint_name>
-        right_elevon_joint
-      </control_joint_name>
-    </plugin>
-    <plugin name='front_left_motor_model' filename='librotors_gazebo_motor_model.so'>
-      <robotNamespace>ts2</robotNamespace>
-      <jointName>rotor_left_joint</jointName>
-      <linkName>rotor_left</linkName>
-      <turningDirection>cw</turningDirection>
-      <timeConstantUp>0.016</timeConstantUp>
-      <timeConstantDown>0.020</timeConstantDown>
-      <maxRotVelocity>800</maxRotVelocity>
-      <motorConstant>7.864e-06</motorConstant>
-      <momentConstant>0.023</momentConstant>
-      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
-      <motorNumber>1</motorNumber>
-      <rotorDragCoefficient>0</rotorDragCoefficient>
-      <rollingMomentCoefficient>0</rollingMomentCoefficient>
-      <motorSpeedPubTopic>/motor_speed/1</motorSpeedPubTopic>
-      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
-    </plugin>
-    <plugin name='front_right_motor_model' filename='librotors_gazebo_motor_model.so'>
-      <robotNamespace>ts2</robotNamespace>
-      <jointName>rotor_right_joint</jointName>
-      <linkName>rotor_right</linkName>
-      <turningDirection>ccw</turningDirection>
-      <timeConstantUp>0.016</timeConstantUp>
-      <timeConstantDown>0.020</timeConstantDown>
-      <maxRotVelocity>800</maxRotVelocity>
-      <motorConstant>7.864e-06</motorConstant>
-      <momentConstant>0.023</momentConstant>
-      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
-      <motorNumber>0</motorNumber>
-      <rotorDragCoefficient>0</rotorDragCoefficient>
-      <rollingMomentCoefficient>0</rollingMomentCoefficient>
-      <motorSpeedPubTopic>/motor_speed/0</motorSpeedPubTopic>
-      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
-    </plugin>
-    <plugin name='rotors_gazebo_imu_plugin' filename='librotors_gazebo_imu_plugin.so'>
-      <robotNamespace>ts2</robotNamespace>
-      <linkName>hummingbird/imu_link</linkName>
-      <imuTopic>/imu</imuTopic>
-      <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
-      <gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
-      <gyroscopeBiasCorrelationTime>1000.0</gyroscopeBiasCorrelationTime>
-      <gyroscopeTurnOnBiasSigma>0.0087</gyroscopeTurnOnBiasSigma>
-      <accelerometerNoiseDensity>0.004</accelerometerNoiseDensity>
-      <accelerometerRandomWalk>0.006</accelerometerRandomWalk>
-      <accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
-      <accelerometerTurnOnBiasSigma>0.000</accelerometerTurnOnBiasSigma>
-    </plugin>
+
+    <static>false</static>
   </model>
 </sdf>
