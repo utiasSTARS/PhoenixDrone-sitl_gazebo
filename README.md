@@ -2,11 +2,11 @@
 
 This repository is built upon RotorS from ETHZ-ASL: https://github.com/ethz-asl/rotors_simulator
 
-Our main contribution is a custom model of Hummingbird under `models/hummingbird/hummingbird.sdf` and its aerodynamic plugin with calibrated aerodyanmic coefficients under `src/gazebo_ts_aerodynamic_plugin.cpp`.
+Our main contribution is a custom model of the Hummingbird under `models/hummingbird/hummingbird.sdf` and its aerodynamic plugin with calibrated aerodyanmic coefficients under `src/gazebo_ts_aerodynamic_plugin.cpp`.
 
 You do not need to explicitly build this library, this repo is referenced as a submodule under the main PX4 repository and will be compiled automatically when running SITL.
 
-**If you use this simulator in academic work, please cite RotorS and our paper as per the README in the upper level repository.**
+**If you use this simulator in academic work, please cite RotorS and our paper as per the README in the top level repository.**
 
 ## Install Gazebo Simulator
 
@@ -15,7 +15,7 @@ Follow instructions on the [official site](http://gazebosim.org/tutorials?cat=in
 
 ## Protobuf
 
-Install the protobuf library, which is used as interface to Gazebo.
+Install the protobuf library, which is used as an interface to Gazebo.
 
 ### Ubuntu Linux
 
@@ -71,7 +71,7 @@ You also need to add the the root location of this repository, e.g. add the foll
 export SITL_GAZEBO_PATH=$HOME/src/sitl_gazebo
 ```
 
-Navigate into the build directory and invoke CMake from it:
+Navigate into the build directory and invoke CMake:
 
 ```bash
 cd ~/src/sitl_gazebo
@@ -87,7 +87,7 @@ make
 
 ### GStreamer Support
 If you want support for the GStreamer camera plugin, make sure to install
-GStreamer before running `cmake`. Eg. on Ubuntu with:
+GStreamer before running `cmake`: e.g. on Ubuntu with:
 ```
 sudo apt-get install gstreamer1.0-* libgstreamer1.0-*
 ```
@@ -101,8 +101,8 @@ sudo apt-get install libimage-exiftool-perl
 
 ## Install
 
-If you wish the libraries and models to be usable anywhere on your system without
-specifying th paths, install as shown below.
+If you want the libraries and models to be usable anywhere on your system without
+specifying their paths, install as shown below.
 
 **Note: If you are using ubuntu, it is best to see the packaging section.**
 
@@ -112,7 +112,7 @@ sudo make install
 
 ## Testing
 
-Gazebo will now launch when typing 'gazebo' on the shell:
+Gazebo will now launch when you type 'gazebo' in the shell:
 
 ```bash
 . /usr/share/gazebo/setup.sh
@@ -120,13 +120,13 @@ Gazebo will now launch when typing 'gazebo' on the shell:
 gazebo worlds/iris.world
 ```
 
-Please refer to the documentation of the particular flight stack how to run it against this framework, e.g. [PX4](http://dev.px4.io/simulation-gazebo.html)
+Please refer to the documentation of the particular flight stack to learn how to run it against this framework, e.g. [PX4](http://dev.px4.io/simulation-gazebo.html)
 
 ## Packaging
 
 ### Deb
 
-To create a debian package for ubuntu and install it to your system.
+To create a debian package for Ubuntu and install it to your system:
 
 ```bash
 cd Build
