@@ -1,8 +1,8 @@
-# Gazebo SITL plugins for Hummingbird
+# Gazebo SITL plugins for PhoenixDrone
 
 This repository is built upon RotorS from ETHZ-ASL: https://github.com/ethz-asl/rotors_simulator
 
-Our main contribution is a custom model of the Hummingbird under `models/hummingbird/hummingbird.sdf` and its aerodynamic plugin with calibrated aerodyanmic coefficients under `src/gazebo_ts_aerodynamic_plugin.cpp`.
+Our main contribution is a custom model of the Phoenix Drone under `models/phoenixdrone/phoenixdrone.sdf` and its aerodynamic plugin with calibrated aerodyanmic coefficients under `src/gazebo_ts_aerodynamic_plugin.cpp`.
 
 You do not need to explicitly build this library, this repo is referenced as a submodule under the main PX4 repository and will be compiled automatically when running SITL.
 

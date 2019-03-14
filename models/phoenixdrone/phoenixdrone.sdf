@@ -1,5 +1,5 @@
 <sdf version='1.5'>
-  <model name='hummingbird'>
+  <model name='phoenixdrone'>
     <link name='base_link'>
       <pose>0 0 0.2 0 -0 0</pose>
       <frame name='base_link'>
@@ -41,7 +41,7 @@
         <geometry>
           <mesh>
             <scale>0.0006 0.0007 0.0007</scale>
-            <uri>model://hummingbird/meshes/pacflyer_s100_mockup.dae</uri>
+            <uri>model://phoenixdrone/meshes/pacflyer_s100_mockup.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -55,7 +55,7 @@
       <velocity_decay/>
       <self_collide>0</self_collide>
     </link>
-    <link name='hummingbird/imu_link'>
+    <link name='phoenixdrone/imu_link'>
       <pose>0 0 0.357 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
@@ -70,8 +70,8 @@
         </inertia>
       </inertial>
     </link>
-    <joint name='hummingbird/imu_joint' type='fixed'>
-      <child>hummingbird/imu_link</child>
+    <joint name='phoenixdrone/imu_joint' type='fixed'>
+      <child>phoenixdrone/imu_link</child>
       <parent>base_link</parent>
     </joint>
     <link name='rotor_left'>
@@ -110,7 +110,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://hummingbird/meshes/iris_prop_cw.dae</uri>
+            <uri>model://phoenixdrone/meshes/iris_prop_cw.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -176,7 +176,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://hummingbird/meshes/iris_prop_ccw.dae</uri>
+            <uri>model://phoenixdrone/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -361,7 +361,7 @@
     </plugin>
     <plugin name='rotors_gazebo_imu_plugin' filename='librotors_gazebo_imu_plugin.so'>
       <robotNamespace></robotNamespace>
-      <linkName>hummingbird/imu_link</linkName>
+      <linkName>phoenixdrone/imu_link</linkName>
       <imuTopic>/imu</imuTopic>
       <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
       <gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
