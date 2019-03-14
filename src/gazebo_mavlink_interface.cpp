@@ -556,40 +556,43 @@ void GazeboMavlinkInterface::OnUpdate(const common::UpdateInfo& /*_info*/) {
     lon_rad = lon_home;
   }
 
-  if (current_time.Double() - last_gps_time_.Double() > gps_update_interval_ - gps_delay_) {  // 120 ms delay
+
+//  if (current_time.Double() - last_gps_time_.Double() > gps_update_interval_) {  // 5Hz
     // Raw UDP mavlink
-    hil_gps_msg_.time_usec = current_time.Double() * 1e6;
-    hil_gps_msg_.fix_type = 3;
-    hil_gps_msg_.lat = lat_rad * 180 / M_PI * 1e7;
-    hil_gps_msg_.lon = lon_rad * 180 / M_PI * 1e7;
-    hil_gps_msg_.alt = (pos_W_I.z + alt_home) * 1000;
-    hil_gps_msg_.eph = 100;
-    hil_gps_msg_.epv = 100;
-    hil_gps_msg_.vel = velocity_current_W_xy.GetLength() * 100;
-    hil_gps_msg_.vn = velocity_current_W.y * 100;
-    hil_gps_msg_.ve = velocity_current_W.x * 100;
-    hil_gps_msg_.vd = -velocity_current_W.z * 100;
+//    mavlink_hil_gps_t hil_gps_msg;
+//    hil_gps_msg.time_usec = current_time.nsec*1000;
+//    hil_gps_msg.fix_type = 3;
+//    hil_gps_msg.lat = lat_rad * 180 / M_PI * 1e7;
+//    hil_gps_msg.lon = lon_rad * 180 / M_PI * 1e7;
+//    hil_gps_msg.alt = (pos_W_I.z + alt_home) * 1000;
+//    hil_gps_msg.eph = 100;
+//    hil_gps_msg.epv = 100;
+//    hil_gps_msg.vel = velocity_current_W_xy.GetLength() * 100;
+//    hil_gps_msg.vn = velocity_current_W.y * 100;
+//    hil_gps_msg.ve = velocity_current_W.x * 100;
+//    hil_gps_msg.vd = -velocity_current_W.z * 100;
+//    // MAVLINK_HIL_GPS_T CoG is [0, 360]. math::Angle::Normalize() is [-pi, pi].
+//    math::Angle cog(atan2(velocity_current_W.x, velocity_current_W.y));
+//    cog.Normalize();
+//    hil_gps_msg.cog = static_cast<uint16_t>(GetDegrees360(cog) * 100.0);
+//    hil_gps_msg.satellites_visible = 10;
 
-    // MAVLINK_HIL_GPS_T CoG is [0, 360]. math::Angle::Normalize() is [-pi, pi].
-    math::Angle cog(atan2(velocity_current_W.x, velocity_current_W.y));
-    cog.Normalize();
-    hil_gps_msg_.cog = static_cast<uint16_t>(GetDegrees360(cog) * 100.0);
-    hil_gps_msg_.satellites_visible = 10;
-  }
+//    send_mavlink_message(MAVLINK_MSG_ID_HIL_GPS, &hil_gps_msg, 200);
+//
+//    msgs::Vector3d gps_msg;
+//    gps_msg.set_x(lat_rad * 180. / M_PI);
+//    gps_msg.set_y(lon_rad * 180. / M_PI);
+//    gps_msg.set_z(hil_gps_msg.alt / 1000.f);
+//    gps_pub_->Publish(gps_msg);
+//
+//    last_gps_time_ = current_time;
+//  }
+}
 
-  if (current_time.Double() - last_gps_time_.Double() > gps_update_interval_) {  // 5Hz
-    mavlink_message_t msg;
-    mavlink_msg_hil_gps_encode_chan(1, 200, MAVLINK_COMM_0, &msg, &hil_gps_msg_);
-    send_mavlink_message(&msg);
-
-    msgs::Vector3d gps_msg;
-    gps_msg.set_x(lat_rad * 180. / M_PI);
-    gps_msg.set_y(lon_rad * 180. / M_PI);
-    gps_msg.set_z(hil_gps_msg_.alt / 1000.f);
-    gps_pub_->Publish(gps_msg);
-
-    last_gps_time_ = current_time;
-  }
+void GazeboMavlinkInterface::send_mavlink_message(const uint8_t msgid, const void *msg, uint8_t component_ID) {
+  component_ID = 0;
+  uint8_t payload_len = mavlink_message_lengths[msgid];
+  unsigned packet_len = payload_len + MAVLINK_NUM_NON_PAYLOAD_BYTES;
 
   // vision position estimate
   double dt_ev = current_time.Double() - last_ev_time_.Double();
@@ -647,7 +650,7 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
 
   // frames
   // g - gazebo (ENU), east, north, up
-  // r - rotors imu frame (FLU), forward, left, up
+  // r - rotors imu frame (FLU), right, forward, up
   // b - px4 (FRD) forward, right down
   // n - px4 (NED) north, east, down
   math::Quaternion q_gr = math::Quaternion(
@@ -667,8 +670,7 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
       ]
   )).round(5)
   */
-  math::Quaternion q_br(0, 1, 0, 0);
-
+  math::Quaternion q_br(0, 1.0, 0.0, 0);
 
   // q_ng
   /*
@@ -687,6 +689,22 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
 
   math::Vector3 pos_g = model_->GetWorldPose().pos;
   math::Vector3 pos_n = q_ng.RotateVector(pos_g);
+
+  // Fake Vicon message
+  mavlink_att_pos_mocap_t mocap_msg;
+  mocap_msg.time_usec = world_->GetSimTime().nsec * 1000.f;
+  mocap_msg.x = pos_n[0];
+  mocap_msg.y = pos_n[1];
+  mocap_msg.z = pos_n[2] - 0.17f - 0.157f;
+
+  mocap_msg.q[0] = q_nb.w;
+  mocap_msg.q[1] = q_nb.x;
+  mocap_msg.q[2] = q_nb.y;
+  mocap_msg.q[3] = q_nb.z;
+  send_mavlink_message(MAVLINK_MSG_ID_ATT_POS_MOCAP, &mocap_msg, 200);
+
+
+
 
   //gzerr << "got imu: " << C_W_I << "\n";
   //gzerr << "got pose: " << T_W_I.rot << "\n";
@@ -756,6 +774,7 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
 
   // ground truth
   math::Vector3 accel_true_b = q_br.RotateVector(model_->GetRelativeLinearAccel());
+  math::Vector3 accel_true_w = q_ng.RotateVector(model_->GetWorldLinearAccel());
 
   // send ground truth
   mavlink_hil_state_quaternion_t hil_state_quat;
@@ -781,9 +800,9 @@ void GazeboMavlinkInterface::ImuCallback(ImuPtr& imu_message) {
   hil_state_quat.ind_airspeed = vel_b.x;
   hil_state_quat.true_airspeed = model_->GetWorldLinearVel().GetLength() * 100; //no wind simulated
 
-  hil_state_quat.xacc = accel_true_b.x * 1000;
-  hil_state_quat.yacc = accel_true_b.y * 1000;
-  hil_state_quat.zacc = accel_true_b.z * 1000;
+  hil_state_quat.xacc = accel_true_w.x * 1000;
+  hil_state_quat.yacc = accel_true_w.y * 1000;
+  hil_state_quat.zacc = accel_true_w.z * 1000;
 
   mavlink_msg_hil_state_quaternion_encode_chan(1, 200, MAVLINK_COMM_0, &msg, &hil_state_quat);
   send_mavlink_message(&msg);
